@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/form.css" />
+  </head>
+
+  <body>
+    <nav><h1>Mini Message Board</h1></nav>
+    <div class="container">
+      <form action="/new" method="POST">
+        <div>
+          <label for="message">Enter your message</label>
+          <textarea type="text" id="message" name="message"></textarea>
+        </div>
+        <div>
+          <label for="user">Enter your name:</label>
+          <input type="text" id="user" name="user" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <a href="/">Go back to messages</a>
+    </div>
+  </body>
+</html>

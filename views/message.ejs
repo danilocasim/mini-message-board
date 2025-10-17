@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Message</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/message.css" />
+  </head>
+
+  <body>
+    <nav><h1>Mini Message Board</h1></nav>
+
+    <div class="container">
+      <div class="message">
+        <p class="user"><%= message.user %></p>
+        <p class="text"><%= message.text %></p>
+        <p class="date"><%= message.added %></p>
+        <a href="/">Go back to message</a>
+      </div>
+    </div>
+  </body>
+</html>
