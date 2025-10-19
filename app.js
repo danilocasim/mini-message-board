@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/new", newMessageRouter);
 app.use("/message", viewMessageRouter);
-// app.use("/*splat", notFoundRouter);
+app.use("/*splat", notFoundRouter);
 
 app.listen(PORT, () => {
   console.log("Listening at PORT:", PORT);
