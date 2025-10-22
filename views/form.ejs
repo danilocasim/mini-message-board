@@ -11,13 +11,15 @@
     <nav><h1>Mini Message Board</h1></nav>
     <div class="container">
       <form action="/new" method="POST">
+        <%- include("partials/errors.ejs") %>
+
         <div>
           <label for="message">Enter your message</label>
           <textarea type="text" id="message" name="message"></textarea>
         </div>
         <div>
           <label for="user">Enter your name:</label>
-          <input type="text" id="user" name="user" />
+          <input type="text" id="user" name="username" />
         </div>
         <button type="submit">Submit</button>
       </form>
