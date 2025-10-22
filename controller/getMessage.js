@@ -1,7 +1,7 @@
-const { getDatabase } = require("../model/db.js");
+const db = require("../db/queries");
 
 async function getAllMessage(req, res) {
-  const messages = getDatabase();
+  const messages = await db.getAllMessages();
   res.render("index", {
     title: "Mini Message Board",
     messages: messages,
@@ -9,12 +9,10 @@ async function getAllMessage(req, res) {
 }
 
 async function getMessage(req, res) {
-  const messages = getDatabase();
-
   const { index } = req.params;
-  res.render("message", {
-    message: messages.find((message, messageIndex) => index == messageIndex),
-  });
+  const message = await db.getMessage(index);
+
+  res.render("message", { message: message[0] });
 }
 
 module.exports = { getAllMessage, getMessage };
