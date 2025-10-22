@@ -1,14 +1,19 @@
-const { getDatabase } = require("../model/db.js");
+const db = require("../db/queries");
+const { validationResult, matchedData } = require("express-validator");
 
-async function postMessage(req, res) {
-  const { message, user } = req.body;
-  res.redirect("/");
+const validateUser = require("../middlewares/validators");
 
-  getDatabase().push({
-    text: message,
-    user: user,
-    added: new Date().toDateString(),
-  });
-}
+exports.postMessage = [
+  validateUser,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("form", { errors: errors.array() });
+    }
 
-module.exports = { postMessage };
+    const { message, username } = matchedData(req);
+
+    await db.postMessage(username, message);
+    res.redirect("/");
+  },
+];
